@@ -1,0 +1,19 @@
+#bez inputa
+import math
+def sienu_izmaksas(cena, krāsas_bundžam2, iztabas_augstums, iztabas_platums, iztabas_garums) :
+    daudzums_m2 = (math.ceil(iztabas_platums) * math.ceil(iztabas_augstums)) * 2 + (math.ceil(iztabas_garums) * math.ceil(iztabas_augstums)) * 2
+    izmaksas = cena * (daudzums_m2 / krāsas_bundžam2)
+    return izmaksas
+
+cena = 27.99 
+krāsas_bundžam2 = 40.0
+iztabas_augstums = 3.20
+iztabas_platums = 5.25
+iztabas_garums = 7.50
+
+izmaksas = sienu_izmaksas(cena, krāsas_bundžam2, iztabas_augstums, iztabas_platums, iztabas_garums)
+#print(("Lai nokrāsotu izstabu jums jāiztērē: ") + izmaksa):
+#print(f"Your answer is {izmaksas}")
+
+print("Lai nokrāsotu izstabu jums ir jaiztēre",math.ceil(izmaksas))
+#ar inputu
