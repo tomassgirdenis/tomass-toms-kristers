@@ -26,23 +26,21 @@ krāsas_bundžam2 = int(input("Cik ar vienu krāsas bundžu var nokrāsot m2?: "
 iztabas_augstums = int(input("Kāds ir iztabas augstums?: "))
 iztabas_platums = int(input("Kāds ir iztabas platums?: "))
 iztabas_garums =int(input("Kāds ir iztabas garums?: "))
-
+daudzums_m2 = sienu_izmaksas(iztabas_augstums,iztabas_platums,iztabas_garums)
 #izmaksas = sienu_izmaksas(cena, krāsas_bundžam2, iztabas_augstums, iztabas_platums, iztabas_garums)
-loga_augstums = int(input("loga augstums"))
-loga_platums = int(input("loga platums "))
-cik_logi = int(input("cik logi istaba?"))
-def kvadratmetri(loga_platums,loga_augstums,daudzums_m2):
-    counter = 0
-    while counter <= cik_logi:
-        loga_laukums = loga_augstums*loga_platums
-        kopejais_m2 = daudzums_m2 - loga_laukums
-        counter += 1
-        return kopejais_m2
-kopejais_m2 = kvadratmetri(loga_platums,loga_augstums,daudzums_m2)
-print(kopejais_m2)
+i = int(input("Cik jums ir logu?: "))
+cik_logi = []
+for _ in range(i):
+    loga_augstums = int(input("Ievadiet loga {} augstumu: ".format(_+1)))
+    loga_platums = int(input("Ievadiet loga {} platums: ".format(_+1)))
+    cik_logi.append((loga_platums, loga_augstums))
+for platums, garums in cik_logi:
+    loga_m2 = loga_augstums * loga_platums
+    viss = daudzums_m2 - loga_m2
+izmaksas = cena * (viss / krāsas_bundžam2)
+print ("Jums krāsa maksās tik "+ str(math.ceil(izmaksas))+" EUR")
 
 
 
 
 
-print("Lai nokrāsotu izstabu jums ir jaiztēre",math.ceil())
