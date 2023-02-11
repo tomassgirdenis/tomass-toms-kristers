@@ -1,22 +1,3 @@
-#bez inputa
-import math
-def sienu_izmaksas(cena, krāsas_bundžam2, iztabas_augstums, iztabas_platums, iztabas_garums) :
-    daudzums_m2 = (math.ceil(iztabas_platums) * math.ceil(iztabas_augstums)) * 2 + (math.ceil(iztabas_garums) * math.ceil(iztabas_augstums)) * 2
-    izmaksas = cena * (daudzums_m2 / krāsas_bundžam2)
-    return izmaksas
-
-cena = 27.99 
-krāsas_bundžam2 = 40.0
-iztabas_augstums = 3.20
-iztabas_platums = 5.25
-iztabas_garums = 7.50
-
-izmaksas = sienu_izmaksas(cena, krāsas_bundžam2, iztabas_augstums, iztabas_platums, iztabas_garums)
-#print(("Lai nokrāsotu izstabu jums jāiztērē: ") + izmaksa):
-#print(f"Your answer is {izmaksas}")
-
-print("Lai nokrāsotu izstabu jums ir jaiztēre",math.ceil(izmaksas))
-#ar inputu
 import math
 def sienu_izmaksas(iztabas_augstums,iztabas_platums,iztabas_garums):
     daudzums_m2 = (math.ceil(iztabas_platums) * math.ceil(iztabas_augstums)) * 2 + (math.ceil(iztabas_garums) * math.ceil(iztabas_augstums)) * 2
@@ -28,19 +9,58 @@ iztabas_platums = int(input("Kāds ir iztabas platums?: "))
 iztabas_garums =int(input("Kāds ir iztabas garums?: "))
 daudzums_m2 = sienu_izmaksas(iztabas_augstums,iztabas_platums,iztabas_garums)
 #izmaksas = sienu_izmaksas(cena, krāsas_bundžam2, iztabas_augstums, iztabas_platums, iztabas_garums)
-i = int(input("Cik jums ir logu?: "))
-cik_logi = []
-for _ in range(i):
-    loga_augstums = int(input("Ievadiet loga {} augstumu: ".format(_+1)))
-    loga_platums = int(input("Ievadiet loga {} platums: ".format(_+1)))
-    cik_logi.append((loga_platums, loga_augstums))
-for platums, garums in cik_logi:
-    loga_m2 = loga_augstums * loga_platums
-    viss = daudzums_m2 - loga_m2
-izmaksas = cena * (viss / krāsas_bundžam2)
+logi = input("Vai jums ir logi?: ")
+def logi_viss():
+    i = 0
+    if logi in ("Ja","Jā",'ja'):
+        i = int(input("Cik jums ir logu?: "))
+        cik_logi = []
+        for _ in range(i):
+            loga_augstums = int(input("Ievadiet loga {} augstumu: ".format(_+1)))
+            loga_platums = int(input("Ievadiet loga {} platums: ".format(_+1)))
+            cik_logi.append((loga_platums, loga_augstums))
+        for platums, garums in cik_logi:
+            loga_m2 = loga_augstums * loga_platums
+            return loga_m2
+    else:
+        loga_m2 = 0
+        return loga_m2
+loga_m2 = logi_viss()
+
+prieksmeti = input("Vai jums ir cita veida objekti, kas jums liks izmantot vairak krasu?: ")
+def prieksmetini():
+    apr3 = 0
+    if prieksmeti in ["Ja", "Jā","ja"]:
+        apr3 = int(input("Cik jums daudz objektu jums ir?"))
+        cik_objekti = []
+        for _ in range(apr3):
+                objekta_augstums = int(input("Ievadiet objekta {} augstumu: ".format(_+1)))
+                objekta_platums = int(input("Ievadiet objekta {} platumu: ".format(_+1)))
+                cik_objekti.append((objekta_augstums,objekta_platums))
+        for augstums, garums in cik_objekti:
+                    objekta_m2 = objekta_platums * objekta_augstums
+                    return objekta_m2
+    else:
+        objekta_m2 = 0
+        return objekta_m2
+objekta_m2 = prieksmetini()               
+jocigas_sienas = input("Vai jums ir sienas ar kantem?: ")
+def sienas_jocigas():
+    jcg_sienas = 0
+    if jocigas_sienas in ("Ja","Jā","ja"):
+        jcg_sienas = int(input("Cik daudz jums tādu ir?: "))
+        jcg_sien = []
+        for _ in range(jcg_sienas):
+            sien_augstums = int(input("Ievadiet sienas {} augstumu: ".format(_+1)))
+            sien_platums = int(input("Ievadiet sienas {} platums: ".format(_+1)))
+            jcg_sien.append((sien_platums, sien_augstums))
+        for platums, garums in jcg_sien:
+            jcg_m2 = sien_augstums * sien_platums
+            return jcg_m2
+    else:
+        jcg_m2 = 0
+        return jcg_m2
+jcg_m2 = sienas_jocigas()
+pilnig_viss = daudzums_m2 - loga_m2 - objekta_m2 - jcg_m2 
+izmaksas = cena * (pilnig_viss / krāsas_bundžam2)
 print ("Jums krāsa maksās tik "+ str(math.ceil(izmaksas))+" EUR")
-
-
-
-
-
